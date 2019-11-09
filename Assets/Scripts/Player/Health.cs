@@ -12,14 +12,13 @@ public class Health : MonoBehaviour, IDamagable
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
             Die();
         }
     }
 
     void Die()
     {
-        //TODO - do something on death
+        Destroy(gameObject);
     }
 
     // Start is called before the first frame update

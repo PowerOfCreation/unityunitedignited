@@ -6,6 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed = 5;
+    public Transform playerSprite;
     private Rigidbody2D rigidbody2d;
 
     void Start()
@@ -24,7 +25,7 @@ public class Movement : MonoBehaviour
         if (moveDirection != Vector2.zero)
         {
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            playerSprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
     }
