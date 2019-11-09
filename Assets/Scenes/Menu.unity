@@ -571,7 +571,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.38848346, g: 0.5675952, b: 0.8490566, a: 0}
+  m_BackGroundColor: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -827,10 +827,10 @@ RectTransform:
   m_Father: {fileID: 557054365}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.883594}
-  m_AnchorMax: {x: 0.5, y: 0.883594}
-  m_AnchoredPosition: {x: 0, y: -1.9000015}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.32256454, y: 0.81666905}
+  m_AnchorMax: {x: 0.77937883, y: 0.93417764}
+  m_AnchoredPosition: {x: 0.90000916, y: 0.6000061}
+  m_SizeDelta: {x: -0.099998474, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039243814
 MonoBehaviour:
@@ -854,16 +854,16 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Game title goes here!
 --- !u!222 &1039243815
 CanvasRenderer:
   m_ObjectHideFlags: 0
