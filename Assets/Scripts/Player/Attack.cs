@@ -8,7 +8,9 @@ public class Attack : MonoBehaviour
    
     public float attackRadius = 1f;
 
-    public int attackDamage = 1;
+    public int attackDamage = 5;
+
+    public LayerMask enemyLayerMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class Attack : MonoBehaviour
 
     void PerformAttack()
     {
-        Collider2D[] hits =  Physics2D.OverlapCircleAll(attackHolder.position, attackRadius);
+        Collider2D[] hits =  Physics2D.OverlapCircleAll(attackHolder.position, attackRadius, enemyLayerMask);
         foreach (Collider2D hit in hits)
         {
             IDamagable damagable = hit.gameObject.GetComponent<IDamagable>();

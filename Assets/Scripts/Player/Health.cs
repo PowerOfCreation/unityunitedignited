@@ -1,12 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable
 {
+    public int health = 10;
+
     public void GetDamage(int damage)
     {
-        Debug.Log("Damage wurde zugefügt");
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        //TODO - do something on death
     }
 
     // Start is called before the first frame update
