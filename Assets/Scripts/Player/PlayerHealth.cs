@@ -17,7 +17,7 @@ public class PlayerHealth : Health
 
     public override void Die()
     {
-        GameStateManager.Instance.currentState = GameStateManager.GameState.Over;
+        GameStateManager.Instance.SetGameState(GameStateManager.GameState.Over);
     }
     // Start is called before the first frame update
     void Start()
@@ -28,5 +28,6 @@ public class PlayerHealth : Health
     // Update is called once per frame
     void Update()
     {
+     
     }
 }
