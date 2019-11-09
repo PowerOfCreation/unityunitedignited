@@ -16,7 +16,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void Update() {
         if(_Player){
-            if(Vector2.Distance(transform.position, targetPosition) > .1f){
+            if(Vector2.Distance(transform.position, targetPosition) > .5f){
                 transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             }else{
                 Destroy(gameObject);
