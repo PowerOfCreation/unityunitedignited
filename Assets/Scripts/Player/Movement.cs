@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
+        //TODO - Movement auf animation erweitern
+        //Drehen von spieler
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
