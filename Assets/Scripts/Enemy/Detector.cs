@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
-    public Bool isMelee;
+    public bool isMelee;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             //Chase Player
             if(isMelee){
-                
+                GetComponentInParent<MeleeEnemy>().player = other.transform;
+            }else{
+                GetComponentInParent<RangeEnemy>().player = other.transform;
             }
         }
     }
@@ -17,7 +19,11 @@ public class Detector : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if(other.tag == "Player"){
             //Lose Player
-            Debug.Log("Lost Player");
+            if(isMelee){
+                GetComponentInParent<MeleeEnemy>().player = null;
+            }else{
+                GetComponentInParent<RangeEnemy>().player = null;
+            }
         }
     }
 }
