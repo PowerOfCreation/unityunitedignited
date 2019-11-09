@@ -9,6 +9,4 @@ public class Boss : MonoBehaviour
     private void Start() {
         _Anim = GetComponent<Animator>();
     }
-
-    
 }

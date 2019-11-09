@@ -16,7 +16,6 @@ public class EnemyController : MonoBehaviour
 
     public virtual void Start() {
         health = maxHealth;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void TakeDamage(int amount){
