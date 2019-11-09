@@ -2,7 +2,7 @@
 [X] Movement - Nicolas
 [ ] Attack, Getting damage, Dealing damage - Nicolas
 [ ] healing - alcohol - Yiming
-[ ] game over
+[ ] game over - Nicolas
 [ ] game state manager
 [ ] boss fight 
 [ ] enemy AI
@@ -12,11 +12,11 @@
 [ ] user interface: Linh
 
 # Grafiken: # 
-- player Linh
-- boss
-- floor LARS
-- wall LARS
-- normal enemy
-- alcohol
-- torch LARS
-- feigen: LARS
+[ ] player Lars
+[ ] boss
+[X] floor LARS
+[ ] wall LARS
+[X] alcohol Yiming
+[X] torch Yiming
+[X] fire Yiming
+[-] feigen: LARS
