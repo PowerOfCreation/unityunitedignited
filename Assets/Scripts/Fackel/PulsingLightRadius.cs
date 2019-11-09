@@ -8,7 +8,12 @@ public class PulsingLightRadius : MonoBehaviour
 {
     private Light _light;
     private float startRadius;
-
+    
+    [SerializeField]
+    private float pulsingSpeed = 2f;
+    [SerializeField]
+    private float pulsingRange = .2f;
+    
     private void Start()
     {
         _light = GetComponent<Light>();
@@ -17,7 +22,7 @@ public class PulsingLightRadius : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float sinTime = Mathf.Sin(Time.fixedTime * 3f);
-        _light.range = this.startRadius + sinTime * 0.2f;
+        float sinTime = Mathf.Sin(Time.fixedTime * pulsingSpeed);
+        _light.range = this.startRadius + sinTime * pulsingRange;
     }
 }
