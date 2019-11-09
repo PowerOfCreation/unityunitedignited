@@ -91,12 +91,14 @@ public class Direction {
         return newDirection;
     }
 
-    public void RandomlyRotateLeftOrRight () {
+    public Direction RandomlyRotateLeftOrRight () {
         if (Random.Range (0, 2) == 0) {
             RotateLeft ();
         } else {
             RotateRight ();
         }
+
+        return this;
     }
 
     public Direction RandomlyRotateLeftOrRightAndCreateNewDirection () {
