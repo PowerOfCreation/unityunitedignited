@@ -5,7 +5,9 @@ using UnityEngine;
 public class LevelGenerator : Singleton<LevelGenerator>
 {
     public List<GameObject> groundPrefabs = new List<GameObject>();
+    public GameObject enemyPrefab;
     public GameObject wallPrefab;
+    public GameObject exitLevelPrefab;
 
     public void Start()
     {
@@ -19,7 +21,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         int startPositionX = width / 2;
         int startPositionY = height / 2;
 
-        StartBranch(groundData, new Vector2Int(startPositionX, startPositionY), new Direction(), 16);
+        Vector2Int lastPosition = StartBranch(groundData, new Vector2Int(startPositionX, startPositionY), new Direction(), 16);
 
         for (int x = 0; x < width; x++)
         {
@@ -36,7 +38,34 @@ public class LevelGenerator : Singleton<LevelGenerator>
             }
         }
 
+        SpawnEnemies(groundData, 10);
+
+        GameObject.Instantiate(exitLevelPrefab, new Vector3(lastPosition.x, lastPosition.y, -1), Quaternion.identity);
+
         GetComponent<CompositeCollider2D>().GenerateGeometry();
+    }
+
+    private void SpawnEnemies(bool[,] groundData, int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            Vector2Int position = GetRandomGroundPosition(groundData);
+            GameObject.Instantiate(enemyPrefab, new Vector3(position.x, position.y, -1), Quaternion.identity);
+        }
+    }
+
+    private Vector2Int GetRandomGroundPosition(bool[,] groundData)
+    {
+        while(true)
+        {
+            int posX = Random.Range(0, groundData.GetLength(0));
+            int posY = Random.Range(0, groundData.GetLength(1));
+            
+            if(groundData[posX, posY])
+            {
+                return new Vector2Int(posX, posY);
+            }
+        }
     }
 
     private GameObject GetGroundPrefab()
@@ -44,11 +73,13 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return groundPrefabs[Random.Range(0, groundPrefabs.Count)];
     }
 
-    private void StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft)
+    private Vector2Int StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft)
     {
+        Vector2Int endPosition = position;
+
         if(iterationsLeft > 0)
         {
-            Vector2Int endPosition = FillRoomOrHallway(groundData, position, direction);
+            endPosition = FillRoomOrHallway(groundData, position, direction);
             
             if(Random.Range(0f , 1f) >= 0.5f)
             {
@@ -57,8 +88,10 @@ public class LevelGenerator : Singleton<LevelGenerator>
                 StartBranch(groundData, halfPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
             }
 
-            StartBranch(groundData, endPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
+            endPosition = StartBranch(groundData, endPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
         }
+
+        return endPosition;
     }
 
     private Vector2Int FillRoomOrHallway(bool[,] groundData, Vector2Int position, Direction direction)
