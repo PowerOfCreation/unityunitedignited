@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
-    public Bool isMelee;
+    public bool isMelee;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
             //Chase Player
