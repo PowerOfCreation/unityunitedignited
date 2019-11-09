@@ -158,6 +158,8 @@ MonoBehaviour:
   - {fileID: 3863407198908642597, guid: b50770d9b71d4579b8a5ceff635cf729, type: 3}
   enemyPrefab: {fileID: 552460794600930660, guid: 29975a429c94bce4ca138a00d519194b,
     type: 3}
+  alcoholPrefab: {fileID: 1634381250445145972, guid: d8696a7caa11d274ca4f98df6cbd2eba,
+    type: 3}
   wallPrefab: {fileID: 5745684636345029497, guid: 70f1d3783d33e83e2acb04d11750e326,
     type: 3}
   exitLevelPrefab: {fileID: 1033863050751887564, guid: a38410c3e20ff786caf898a067e2498c,

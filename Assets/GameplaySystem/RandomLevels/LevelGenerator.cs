@@ -6,6 +6,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 {
     public List<GameObject> groundPrefabs = new List<GameObject>();
     public GameObject enemyPrefab;
+    public GameObject alcoholPrefab;
     public GameObject wallPrefab;
     public GameObject exitLevelPrefab;
 
@@ -38,19 +39,20 @@ public class LevelGenerator : Singleton<LevelGenerator>
             }
         }
 
-        SpawnEnemies(groundData, 10);
+        SpawnGameObjectOnGround(groundData, 10, enemyPrefab);
+        SpawnGameObjectOnGround(groundData, 10, alcoholPrefab);
 
         GameObject.Instantiate(exitLevelPrefab, new Vector3(lastPosition.x, lastPosition.y, -1), Quaternion.identity);
 
         GetComponent<CompositeCollider2D>().GenerateGeometry();
     }
 
-    private void SpawnEnemies(bool[,] groundData, int amount)
+    private void SpawnGameObjectOnGround(bool[,] groundData, int amount, GameObject gameObjectToSpawn)
     {
         for (int i = 0; i < amount; i++)
         {
             Vector2Int position = GetRandomGroundPosition(groundData);
-            GameObject.Instantiate(enemyPrefab, new Vector3(position.x, position.y, -1), Quaternion.identity);
+            GameObject.Instantiate(gameObjectToSpawn, new Vector3(position.x, position.y, -1), Quaternion.identity);
         }
     }
 
