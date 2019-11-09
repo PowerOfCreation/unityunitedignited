@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LevelGenerator : Singleton<LevelGenerator>
 {
-    public GameObject groundPrefab;
+    public List<GameObject> groundPrefabs = new List<GameObject>();
     public GameObject wallPrefab;
 
     public void Start()
     {
-        GenerateLevel(100, 100);
+        GenerateLevel(200, 200);
     }
 
     public void GenerateLevel(int width, int height)
@@ -27,14 +27,21 @@ public class LevelGenerator : Singleton<LevelGenerator>
             {
                 if(groundData[x, y] == true)
                 {
-                    GameObject.Instantiate(groundPrefab, new Vector2(x, y), Quaternion.identity, transform);
+                    GameObject.Instantiate(GetGroundPrefab(), new Vector2(x, y), Quaternion.identity, transform);
                 }
                 else
                 {
                     GameObject.Instantiate(wallPrefab, new Vector2(x, y), Quaternion.identity, transform);
                 }
             }
-        } 
+        }
+
+        GetComponent<CompositeCollider2D>().GenerateGeometry();
+    }
+
+    private GameObject GetGroundPrefab()
+    {
+        return groundPrefabs[Random.Range(0, groundPrefabs.Count)];
     }
 
     private void StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft)
@@ -43,49 +50,54 @@ public class LevelGenerator : Singleton<LevelGenerator>
         {
             Vector2Int endPosition = FillRoomOrHallway(groundData, position, direction);
             
-            if(Random.Range(0f , 1f) > 0.5f)
+            if(Random.Range(0f , 1f) >= 0.5f)
             {
-                Vector2Int halfPosition = position + ((endPosition - position).Divide(0.5f));
+                Vector2Int halfPosition = position + ((endPosition - position).Divide(2f));
 
-                StartBranch(groundData, halfPosition, direction.RandomlyRotateLeftOrRight(), iterationsLeft - 1);
+                StartBranch(groundData, halfPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
             }
 
-            StartBranch(groundData, endPosition, direction.RandomlyRotateLeftOrRight(), iterationsLeft - 1);
+            StartBranch(groundData, endPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
         }
     }
 
     private Vector2Int FillRoomOrHallway(bool[,] groundData, Vector2Int position, Direction direction)
     {
+        Vector2Int endPosition;
+
         if(Random.Range(0f, 1f) > 0.5f)
         {
-            position = FillHallway(groundData, position, direction, Random.Range(3, 10));
+            endPosition = FillHallway(groundData, position, direction, Random.Range(3, 10));
         }
         else
         {
-            position = FillRoom(groundData, position, direction, Random.Range(3, 10), Random.Range(3, 10));
+            endPosition = FillRoom(groundData, position, direction, Random.Range(3, 10), Random.Range(3, 10));
         }
 
-        return position;
+        return endPosition;
     }
 
-    private Vector2Int FillHallway(bool[,] groundData, Vector2Int position, Direction direction, int length)
+    private Vector2Int FillHallway(bool[,] groundData, Vector2Int position, Direction direction, int length, int width = 3)
     {
 
         Vector2Int offset = new Vector2Int(0, 0);
         try
         {
-            for (int i = 0; i < length; i++)
+            for (int y = 0; y < width; y++)
             {
-                offset = new Vector2Int(i, 0);
+                for (int i = 0; i < length; i++)
+                {
+                    offset = new Vector2Int(i, y);
 
-                offset = offset.Rotate(direction.ToQuaternion().eulerAngles.y);
+                    offset = offset.Rotate(direction.ToQuaternion().eulerAngles.y);
 
-                groundData[position.x + offset.x, position.y + offset.y] = true;
+                    groundData[position.x + offset.x, position.y + offset.y] = true;
+                }
             }
         }
         catch(System.IndexOutOfRangeException e)
         {
-
+            offset = new Vector2Int(0, 0);
         }
 
         return new Vector2Int(position.x + offset.x, position.y + offset.y); 
@@ -109,7 +121,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         }
         catch(System.IndexOutOfRangeException e)
         {
-
+            offset = new Vector2Int(0, 0);
         }
 
         return new Vector2Int(position.x + offset.x, position.y + offset.y);
