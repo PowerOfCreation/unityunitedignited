@@ -7,16 +7,16 @@ public class Health : MonoBehaviour, IDamagable
 {
     public int health = 10;
 
-    public void GetDamage(int damage)
+    public virtual void GetDamage(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0) 
         {
             Die();
         }
     }
 
-    void Die()
+    public virtual void Die()
     {
         Destroy(gameObject);
     }
