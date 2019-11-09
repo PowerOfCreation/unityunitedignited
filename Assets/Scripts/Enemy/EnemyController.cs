@@ -6,9 +6,11 @@ public class EnemyController : MonoBehaviour
 {
     public int maxHealth = 100;
     public float speed;
+    public float atkRange = 1;
     public float atkDelay = 1;
     public int damage = 1;
     private int health;
+
     [HideInInspector]
     public Transform player;
 
@@ -16,6 +18,7 @@ public class EnemyController : MonoBehaviour
         health = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
     void TakeDamage(int amount){
         health -= amount;
 
