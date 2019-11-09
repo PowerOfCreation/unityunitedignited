@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        Vector2 moveDirection = gameObject.GetComponent<Rigidbody2D>().velocity;
+        Vector2 moveDirection = rigidbody2d.velocity;
 
         if (moveDirection != Vector2.zero)
         {
