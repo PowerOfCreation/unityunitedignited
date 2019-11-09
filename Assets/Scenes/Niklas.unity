@@ -156,7 +156,7 @@ MonoBehaviour:
   - {fileID: 3600761697569714646, guid: 8719b28be033af0b9bff3f626fe570fd, type: 3}
   - {fileID: 6394626982060079891, guid: 07ac82f455ea97ff599e27446d829780, type: 3}
   - {fileID: 3863407198908642597, guid: b50770d9b71d4579b8a5ceff635cf729, type: 3}
-  enemyPrefab: {fileID: 552460794600930660, guid: d369d98fceb56e45dbfdadd5542dde07,
+  enemyPrefab: {fileID: 552460794600930660, guid: 29975a429c94bce4ca138a00d519194b,
     type: 3}
   wallPrefab: {fileID: 5745684636345029497, guid: 70f1d3783d33e83e2acb04d11750e326,
     type: 3}
