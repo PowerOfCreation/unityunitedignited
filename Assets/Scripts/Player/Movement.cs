@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Movement : MonoBehaviour
 {
     public float speed = 5;
-    public GameObject player;
+    private Rigidbody2D rigidbody2d;
 
-    // Update is called once per frame
-    void Update()
+    void Start()
+    {
+        rigidbody2d = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        this.transform.Translate(movement * speed * Time.deltaTime);
+        rigidbody2d.AddForce(movement * speed * Time.deltaTime);
     }
 }
