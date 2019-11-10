@@ -24,3 +24,4 @@
 [X] torch Yiming
 [X] fire Yiming
 [X] feigen: LARS
+[ ] trap Yiming
