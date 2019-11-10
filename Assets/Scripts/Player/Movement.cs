@@ -43,11 +43,7 @@ public class Movement : MonoBehaviour
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             playerSprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
-<<<<<<< HEAD
-
-=======
         
->>>>>>> origin/Nicolas
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
 
         if (Time.time > startDashTime + dashCooldown)
