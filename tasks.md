@@ -11,7 +11,7 @@
 [X] randomly generating levels - niklas
 [X] user interface: Nicolas
 [X] play figs animation - Niklas
-[ ] stamina bar - Niklas
+    [ ] stamina bar - Niklas
 [ ] play sounds - Linq
 [ ] show text/dialog - Linq
 
