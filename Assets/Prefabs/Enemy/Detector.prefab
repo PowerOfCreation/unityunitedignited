@@ -45,5 +45,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMelee: 0
   isBoss: 0
-  detectionRange: 3
+  detectionRange: 12
   enemyController: {fileID: 0}

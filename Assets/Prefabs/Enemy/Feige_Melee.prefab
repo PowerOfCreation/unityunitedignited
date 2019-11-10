@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   speed: 5
-  atkRange: 0.105
+  atkRange: 0.5
   atkDelay: 2
   damage: 1
   player: {fileID: 0}
