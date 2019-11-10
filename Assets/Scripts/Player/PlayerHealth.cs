@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : Health
+public class PlayerHealth : Health, IDamagable
 {
     public int playerHealth = 10;
 
     public override void GetDamage(int damage)
     {
         playerHealth -= damage;
+        HealthSlider.self.slider.value = playerHealth; 
+
         if (playerHealth <= 0)
         {
             Die();
