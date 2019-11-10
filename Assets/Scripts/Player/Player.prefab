@@ -104,8 +104,6 @@ MonoBehaviour:
   speed: 2000
   playerSprite: {fileID: 5404900300740368101}
   animator: {fileID: 7591388224172179172}
-  dashSpeed: 0
-  startDashTime: 0
 --- !u!114 &7035877609235400204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,9 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackHolder: {fileID: 5453898768076068505}
-  attackRadius: 1
+  attackRadius: 0.5
   attackDamage: 1
-  attackRate: 120
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -330,6 +327,7 @@ GameObject:
   - component: {fileID: 7591388224172179172}
   - component: {fileID: 4971435531225575902}
   - component: {fileID: 777206532}
+  - component: {fileID: 7391852138054855292}
   m_Layer: 8
   m_Name: PlayerSprite
   m_TagString: Player
@@ -562,6 +560,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7391852138054855292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5844705908047690571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86fcc43cf06d1f793a7f1101ffd3b229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &67228736
 PrefabInstance:
   m_ObjectHideFlags: 0

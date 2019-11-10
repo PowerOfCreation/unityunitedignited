@@ -10,18 +10,22 @@ public class Attack : MonoBehaviour
 
     public int attackDamage = 5;
 
-    public int attackRate = 300;
-
-    private int attackCooldown = 0;
+    private bool canAttack = true;
 
     public LayerMask enemyLayerMask;
 
-    // Update is called once per frame
+    private Animator animator;
+    private int attackTriggerId;
+
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+        attackTriggerId = Animator.StringToHash("attack");
+    }
+
     void Update()
     {
-        attackCooldown--;
-        
-        if (Input.GetButtonDown("Jump") && attackCooldown <= 0)
+        if (Input.GetButtonDown("Jump") && canAttack)
         {
                 PerformAttack();
         }
@@ -29,7 +33,11 @@ public class Attack : MonoBehaviour
 
     void PerformAttack()
     {
+        canAttack = false;
+        animator.SetTrigger(attackTriggerId);
+
         Collider2D[] hits =  Physics2D.OverlapCircleAll(attackHolder.position, attackRadius, enemyLayerMask);
+        
         foreach (Collider2D hit in hits)
         {
             IDamagable damagable = hit.gameObject.GetComponent<IDamagable>();
@@ -38,6 +46,10 @@ public class Attack : MonoBehaviour
                 damagable.GetDamage(attackDamage, transform);
             }
         }
-        attackCooldown = attackRate;
+    }
+
+    public void OnAttackEnded()
+    {
+        canAttack = true;
     }
 }

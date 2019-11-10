@@ -10,7 +10,7 @@ public class Health : MonoBehaviour, IDamagable
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2D;
     private bool tookDamage = false;
-    private float damageTime = .1f;
+    private float damageTime = .2f;
     public AudioClip takeDamage;
     public GameObject deadPrefab;
     public ParticleSystem deadEffect;
@@ -46,7 +46,7 @@ public class Health : MonoBehaviour, IDamagable
             Die();
         }
         //Kockback
-        rigidbody2D.AddForce((transform.position - attackerTransform.position).normalized * 500);
+        rigidbody2D.AddForce((transform.position - attackerTransform.position).normalized * 1000);
     }
 
     public virtual void Die()
