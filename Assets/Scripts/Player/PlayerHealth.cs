@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : Health, IDamagable
 {
     private int maxPlayerHealth;
+    public GameObject hurtPanel;
 
     public void Start()
     {
@@ -15,7 +16,9 @@ public class PlayerHealth : Health, IDamagable
     {
         health -= damage;
         UpdateHealthSlider();
-
+        if(hurtPanel){
+            hurtPanel.GetComponent<HurtPanelController>().Show();
+        }
         if (health <= 0)
         {
             Die();
