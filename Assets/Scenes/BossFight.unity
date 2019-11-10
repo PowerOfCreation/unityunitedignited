@@ -120,6 +120,31 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &209890764 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2564863764567576598, guid: e1e7bb9386785d943a4e2c2836c4503d,
+    type: 3}
+  m_PrefabInstance: {fileID: 536128581}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &209890770
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209890764}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6585b325f01d2414187391c5de2fe026, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &249581569
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +410,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4971435531225575902, guid: e1e7bb9386785d943a4e2c2836c4503d,
+        type: 3}
+      propertyPath: hurtPanel
+      value: 
+      objectReference: {fileID: 1523004657}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1e7bb9386785d943a4e2c2836c4503d, type: 3}
 --- !u!1 &650014191
@@ -666,6 +696,7 @@ GameObject:
   - component: {fileID: 1523004660}
   - component: {fileID: 1523004659}
   - component: {fileID: 1523004661}
+  - component: {fileID: 1523004662}
   m_Layer: 5
   m_Name: HurtPanel
   m_TagString: Untagged
@@ -705,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
+  m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -740,6 +771,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1db4bf44b0e3346982e900d90ce9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1523004662
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523004657}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94f2823840d6c1e4299ad63a7132b15d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1590308725
 GameObject:
   m_ObjectHideFlags: 0
