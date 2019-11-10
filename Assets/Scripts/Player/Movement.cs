@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public Animator animator;
     private Rigidbody2D rigidbody2d;
     private AudioSource _AudioSource;
+    public AudioClip dashSound;
 
     int walkId;
 
@@ -50,6 +51,7 @@ public class Movement : MonoBehaviour
         {
             if (Input.GetButtonDown("Shift"))
             {
+                if(dashSound) _AudioSource.PlayOneShot(dashSound, .3f);
                 startDashTime = Time.time;
                 rigidbody2d.velocity = playerSprite.up * dashSpeed;
             }
