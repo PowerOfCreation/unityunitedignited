@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 5
-  atkRange: 0.5
-  summonDelay: 3
+  atkRange: 0.2
+  summonDelay: 5
   damage: 5
   enemyPrefab:
   - {fileID: 552460794600930660, guid: d369d98fceb56e45dbfdadd5542dde07, type: 3}

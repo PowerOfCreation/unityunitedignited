@@ -33,6 +33,7 @@ public class Health : MonoBehaviour, IDamagable
         spriteRenderer.color = Color.red;
         tookDamage = true;
         health -= damage;
+        if(takeDamageEffect) takeDamageEffect.Play();
         if (health <= 0) 
         {
             Die();
