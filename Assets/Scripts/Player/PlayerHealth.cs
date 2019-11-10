@@ -8,6 +8,7 @@ public class PlayerHealth : Health, IDamagable
     public GameObject hurtPanel;
     public AudioClip healSoundFx;
     private AudioSource _audioSource;
+    public AudioClip GameOverSoundFx;
     public GameObject _bgAudio;
     public void Start()
     {
@@ -41,7 +42,10 @@ public class PlayerHealth : Health, IDamagable
 
     public override void Die()
     {
-        if(_bgAudio) _bgAudio.GetComponent<AudioSource>().Stop();    
+        if(_bgAudio){
+            _bgAudio.GetComponent<AudioSource>().clip = GameOverSoundFx;
+            _bgAudio.GetComponent<AudioSource>().Play();    
+        } 
         GameStateManager.Instance.SetGameState(GameStateManager.GameState.Over);
     }
 

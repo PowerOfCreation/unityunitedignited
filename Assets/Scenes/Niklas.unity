@@ -156,6 +156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceOfObjectsToPlayer: 10
+  iterationOffset: 8
+  iterationsPerLevel: 4
+  branchProbabilityPerLevel: 0.2
+  enemiesPerLevel: 7
+  alcoholPerLevel: 9
 --- !u!4 &909030929
 Transform:
   m_ObjectHideFlags: 0
@@ -166,8 +171,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 117.66603, y: 127.00543, z: -7.3125}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1537758511}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -567,6 +571,16 @@ PrefabInstance:
       propertyPath: takeDamage
       value: 
       objectReference: {fileID: 8300000, guid: 2def8afa5d32d8f4497b433d888be97a, type: 3}
+    - target: {fileID: 4971435531225575902, guid: e1e7bb9386785d943a4e2c2836c4503d,
+        type: 3}
+      propertyPath: _bgAudio
+      value: 
+      objectReference: {fileID: 1537758510}
+    - target: {fileID: 4971435531225575902, guid: e1e7bb9386785d943a4e2c2836c4503d,
+        type: 3}
+      propertyPath: GameOverSoundFx
+      value: 
+      objectReference: {fileID: 8300000, guid: f7f1e32b57eee3d2cba01e8f0014ca39, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1e7bb9386785d943a4e2c2836c4503d, type: 3}
 --- !u!1 &1537758510
@@ -593,12 +607,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537758510}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 117.66603, y: 127.00543, z: -7.3125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 909030929}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1537758512
 AudioSource:
