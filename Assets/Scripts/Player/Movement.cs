@@ -12,9 +12,9 @@ public class Movement : MonoBehaviour
 
     int walkId;
 
-    public float dashSpeed;
-    private float dashTime;
-    public float startDashTime;
+    private float dashSpeed = 50f;
+    private float dashCooldown = 1f;
+    private float startDashTime = 0f;
 
     void Start()
     {
@@ -39,31 +39,12 @@ public class Movement : MonoBehaviour
 
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
 
-        float dashTime = Time.time;
-
-        if (dashTime < 0)
+        if (Time.time > startDashTime + dashCooldown)
         {
-            dashTime = startDashTime;
-            rigidbody2d.velocity = Vector2.zero;
-        }
-        else
-        {
-            dashTime -= Time.deltaTime;
-            if (Input.GetButtonDown("Shift") && moveDirection.x > 0)
+            if (Input.GetButtonDown("Shift"))
             {
-                rigidbody2d.velocity = Vector2.right * dashSpeed;
-            }
-            else if (Input.GetButtonDown("Shift") && moveDirection.x < 0)
-            {
-                rigidbody2d.velocity = Vector2.left * dashSpeed;
-            }
-            else if (Input.GetButtonDown("Shift") && moveDirection.y > 0)
-            {
-                rigidbody2d.velocity = Vector2.up * dashSpeed;
-            }
-            else if (Input.GetButtonDown("Shift") && moveDirection.y < 0)
-            {
-                rigidbody2d.velocity = Vector2.up * dashSpeed;
+                startDashTime = Time.time;
+                rigidbody2d.velocity = playerSprite.up * dashSpeed;
             }
         }
     }
