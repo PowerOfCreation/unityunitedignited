@@ -18,6 +18,8 @@ public class PlayerHealth : Health, IDamagable
 
     public override void GetDamage(int damage, Transform attackerTransform)
     {
+        if(health == 0) { return; }
+        
         health -= damage;
         UpdateHealthSlider();
         if(takeDamage) {
