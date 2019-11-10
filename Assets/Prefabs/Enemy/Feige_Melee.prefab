@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 552460794600930663}
   - component: {fileID: 552460794600930657}
   - component: {fileID: 1688249974}
+  - component: {fileID: 1463524832829835463}
   m_Layer: 9
   m_Name: Feige_Melee
   m_TagString: Enemy
@@ -168,6 +169,25 @@ MonoBehaviour:
   deadPrefab: {fileID: 0}
   deadEffect: {fileID: 0}
   takeDamageEffect: {fileID: 0}
+--- !u!95 &1463524832829835463
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552460794600930660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56f602de80c1fb213a5ad340c9ae9385, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &552460794198418573
 PrefabInstance:
   m_ObjectHideFlags: 0
