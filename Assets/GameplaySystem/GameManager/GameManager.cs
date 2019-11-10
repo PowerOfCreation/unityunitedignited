@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        if(GameManager.Instance != this) { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
     }
 
