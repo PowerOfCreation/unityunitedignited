@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &3764071523250647052
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033863050751887564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d9c5a80a2338f2e2b979a98cebfc32e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4932175700055949006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033863050751887564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56806350271090171aea6a304cd5dbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4748413912460041141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75,12 +106,34 @@ PrefabInstance:
     - target: {fileID: 4283195449145710826, guid: 70f1d3783d33e83e2acb04d11750e326,
         type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4283195449145710826, guid: 70f1d3783d33e83e2acb04d11750e326,
         type: 3}
       propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4283195449145710826, guid: 70f1d3783d33e83e2acb04d11750e326,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8677420904157910253, guid: 78355c8fc951364649b1963317915ec9,
+        type: 3}
+    - target: {fileID: 163765971549532248, guid: 70f1d3783d33e83e2acb04d11750e326,
+        type: 3}
+      propertyPath: m_UsedByComposite
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 163765971549532248, guid: 70f1d3783d33e83e2acb04d11750e326,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70f1d3783d33e83e2acb04d11750e326, type: 3}
+--- !u!1 &1033863050751887564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5745684636345029497, guid: 70f1d3783d33e83e2acb04d11750e326,
+    type: 3}
+  m_PrefabInstance: {fileID: 4748413912460041141}
+  m_PrefabAsset: {fileID: 0}
