@@ -10,6 +10,10 @@ public class Attack : MonoBehaviour
 
     public int attackDamage = 5;
 
+    public int attackRate = 300;
+
+    private int attackCooldown = 0;
+
     public LayerMask enemyLayerMask;
     // Start is called before the first frame update
     void Start()
@@ -20,9 +24,11 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        attackCooldown--;
+        
+        if (Input.GetButtonDown("Jump") && attackCooldown <= 0)
         {
-            PerformAttack();
+                PerformAttack();
         }
     }
 
@@ -37,5 +43,6 @@ public class Attack : MonoBehaviour
                 damagable.GetDamage(attackDamage, transform);
             }
         }
+        attackCooldown = attackRate;
     }
 }
