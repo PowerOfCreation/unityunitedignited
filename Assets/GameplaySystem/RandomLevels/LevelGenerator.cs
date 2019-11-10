@@ -7,7 +7,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
     public List<RandomPrefabSpawn> groundPrefabs = new List<RandomPrefabSpawn>();
     public GameObject enemyPrefab;
     public GameObject alcoholPrefab;
-    public GameObject wallPrefab;
+    public List<RandomPrefabSpawn> wallPrefabs = new List<RandomPrefabSpawn>();
     public GameObject exitLevelPrefab;
 
     public void Start()
@@ -34,7 +34,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
                 }
                 else if(HasAdjacentFloorTile(groundData, new Vector2Int(x, y)))
                 {
-                    GameObject.Instantiate(wallPrefab, new Vector3(x, y, 1), Quaternion.identity, transform);
+                    GameObject.Instantiate(GetRandomPrefab(wallPrefabs), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
             }
         }

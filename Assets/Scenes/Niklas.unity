@@ -353,8 +353,16 @@ MonoBehaviour:
     type: 3}
   alcoholPrefab: {fileID: 1634381250445145972, guid: d8696a7caa11d274ca4f98df6cbd2eba,
     type: 3}
-  wallPrefab: {fileID: 5745684636345029497, guid: 70f1d3783d33e83e2acb04d11750e326,
-    type: 3}
+  wallPrefabs:
+  - prefab: {fileID: 5745684636345029497, guid: 70f1d3783d33e83e2acb04d11750e326,
+      type: 3}
+    weight: 5
+  - prefab: {fileID: 9219254397706869835, guid: 2ef829ba8f747fe5490967f16070ea44,
+      type: 3}
+    weight: 1
+  - prefab: {fileID: 1232239594970486760, guid: 29b624bef920e0cb8b9c0636f5ef4bde,
+      type: 3}
+    weight: 1
   exitLevelPrefab: {fileID: 1033863050751887564, guid: a38410c3e20ff786caf898a067e2498c,
     type: 3}
 --- !u!4 &1457590653
