@@ -10,7 +10,7 @@ public class Health : MonoBehaviour, IDamagable
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2D;
     private bool tookDamage = false;
-    private int damageTime = 20;
+    private float damageTime = .1f;
 
     private GameObject player;
 
@@ -47,12 +47,13 @@ public class Health : MonoBehaviour, IDamagable
     {
         if (tookDamage)
         {
-            damageTime--;
+            damageTime -= Time.deltaTime;
+
             if (damageTime <= 0)
             {
                 spriteRenderer.color = Color.white;
                 tookDamage = false;
-                damageTime = 20;
+                damageTime = .1f;
             }
         }
     }
