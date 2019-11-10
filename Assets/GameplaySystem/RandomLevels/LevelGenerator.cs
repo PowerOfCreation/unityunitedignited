@@ -30,11 +30,11 @@ public class LevelGenerator : Singleton<LevelGenerator>
             {
                 if(groundData[x, y] == true)
                 {
-                    GameObject.Instantiate(GetGroundPrefab(), new Vector2(x, y), Quaternion.identity, transform);
+                    GameObject.Instantiate(GetGroundPrefab(), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
                 else
                 {
-                    GameObject.Instantiate(wallPrefab, new Vector2(x, y), Quaternion.identity, transform);
+                    GameObject.Instantiate(wallPrefab, new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
             }
         }
