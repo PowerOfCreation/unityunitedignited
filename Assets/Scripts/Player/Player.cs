@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player self;
 
-    void Start()
+    void Awake()
     {
         self = this;
         GameManager.Instance.SetLocalPlayer(transform);
