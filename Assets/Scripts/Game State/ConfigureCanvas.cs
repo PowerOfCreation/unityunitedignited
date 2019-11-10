@@ -7,7 +7,7 @@ public class ConfigureCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.SetActive(false);
+        GetComponent<CanvasGroup>().Hide();
         GameStateManager.Instance.GameOverCanvas = gameObject;
     }
 }

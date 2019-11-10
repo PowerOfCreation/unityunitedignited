@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class PlayerHealth : Health, IDamagable
 {
-    public int playerHealth = 10;
+    private int maxPlayerHealth;
+    public GameObject hurtPanel;
 
-    public override void GetDamage(int damage)
+    public void Start()
     {
-        playerHealth -= damage;
-        HealthSlider.self.slider.value = playerHealth; 
+        maxPlayerHealth = health;
+    }
 
-        if (playerHealth <= 0)
+    public override void GetDamage(int damage, Transform attackerTransform)
+    {
+        health -= damage;
+        UpdateHealthSlider();
+        if(hurtPanel){
+            hurtPanel.GetComponent<HurtPanelController>().Show();
+        }
+        if (health <= 0)
         {
             Die();
         }
+    }
+
+    public virtual void Heal(int amount)
+    {
+        health += amount;
+        health = (health > maxPlayerHealth)?maxPlayerHealth:health;
+        UpdateHealthSlider();
     }
 
     public override void Die()
     {
         GameStateManager.Instance.SetGameState(GameStateManager.GameState.Over);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void UpdateHealthSlider()
     {
-     
+        if(HealthSlider.self){
+            HealthSlider.self.slider.value = health; 
+        }
     }
 }

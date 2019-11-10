@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LevelGenerator : Singleton<LevelGenerator>
 {
-    public List<GameObject> groundPrefabs = new List<GameObject>();
+    public List<RandomPrefabSpawn> groundPrefabs = new List<RandomPrefabSpawn>();
     public GameObject enemyPrefab;
-    public GameObject wallPrefab;
+    public GameObject alcoholPrefab;
+    public List<RandomPrefabSpawn> wallPrefabs = new List<RandomPrefabSpawn>();
     public GameObject exitLevelPrefab;
 
     public void Start()
@@ -14,7 +15,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         GenerateLevel(200, 200);
     }
 
-    public void GenerateLevel(int width, int height)
+    private void GenerateLevel(int width, int height)
     {
         bool[,] groundData = new  bool[width, height];
 
@@ -29,48 +30,83 @@ public class LevelGenerator : Singleton<LevelGenerator>
             {
                 if(groundData[x, y] == true)
                 {
-                    GameObject.Instantiate(GetGroundPrefab(), new Vector2(x, y), Quaternion.identity, transform);
+                    GameObject.Instantiate(GetRandomPrefab(groundPrefabs), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
-                else
+                else if(HasAdjacentFloorTile(groundData, new Vector2Int(x, y)))
                 {
-                    GameObject.Instantiate(wallPrefab, new Vector2(x, y), Quaternion.identity, transform);
+                    GameObject.Instantiate(GetRandomPrefab(wallPrefabs), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
             }
         }
 
-        SpawnEnemies(groundData, 10);
+        SpawnGameObjectOnGround(groundData, 10, enemyPrefab);
+        SpawnGameObjectOnGround(groundData, 10, alcoholPrefab);
 
         GameObject.Instantiate(exitLevelPrefab, new Vector3(lastPosition.x, lastPosition.y, -1), Quaternion.identity);
 
         GetComponent<CompositeCollider2D>().GenerateGeometry();
     }
 
-    private void SpawnEnemies(bool[,] groundData, int amount)
+    private bool HasAdjacentFloorTile(bool[,] groundData, Vector2Int position)
+    {
+        if(groundData.GetLength(0) > position.x + 1 && groundData[position.x + 1, position.y]) { return true; }
+        if(position.x > 0 && groundData[position.x - 1, position.y]) { return true; }
+
+        if(groundData.GetLength(1) > position.y + 1 && groundData[position.x, position.y + 1]) { return true; }
+        if(position.y > 0 && groundData[position.x, position.y -1]) { return true; }
+
+        return false;
+
+    }
+
+    private void SpawnGameObjectOnGround(bool[,] groundData, int amount, GameObject gameObjectToSpawn)
     {
         for (int i = 0; i < amount; i++)
         {
-            Vector2Int position = GetRandomGroundPosition(groundData);
-            GameObject.Instantiate(enemyPrefab, new Vector3(position.x, position.y, -1), Quaternion.identity);
+            Vector2Int position = GetRandomGroundPositionAwayFromPoint(groundData, GameManager.Instance.GetLocalPlayer().position, GameManager.Instance.minDistanceOfObjectsToPlayer);
+            GameObject.Instantiate(gameObjectToSpawn, new Vector3(position.x, position.y, -1), Quaternion.identity);
         }
     }
 
-    private Vector2Int GetRandomGroundPosition(bool[,] groundData)
+    private static Vector2Int GetRandomGroundPositionAwayFromPoint(bool[,] groundData, Vector2 point, float minDistanceToPoint)
     {
         while(true)
         {
             int posX = Random.Range(0, groundData.GetLength(0));
             int posY = Random.Range(0, groundData.GetLength(1));
             
-            if(groundData[posX, posY])
+            Vector2Int pointToTest = new Vector2Int(posX, posY);
+            
+            if(groundData[posX, posY] && Vector2.Distance(pointToTest, point) > minDistanceToPoint)
             {
-                return new Vector2Int(posX, posY);
+                return pointToTest;
             }
         }
     }
 
-    private GameObject GetGroundPrefab()
+    private GameObject GetRandomPrefab(List<RandomPrefabSpawn> randomPrefabSpawns)
     {
-        return groundPrefabs[Random.Range(0, groundPrefabs.Count)];
+        int totalWeight = 0;
+
+        for (int i = 0; i < randomPrefabSpawns.Count; i++)
+        {
+            totalWeight += randomPrefabSpawns[i].weight;
+        }
+
+        int choosenWeight = Random.Range(0, totalWeight);
+        int currentWeight = 0;
+
+        for (int i = 0; i < randomPrefabSpawns.Count; i++)
+        {
+            currentWeight += randomPrefabSpawns[i].weight;
+
+            if(choosenWeight < currentWeight)
+            {
+                return randomPrefabSpawns[i].prefab;
+            }
+        }
+
+        return null;
     }
 
     private Vector2Int StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft)
@@ -94,7 +130,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return endPosition;
     }
 
-    private Vector2Int FillRoomOrHallway(bool[,] groundData, Vector2Int position, Direction direction)
+    private static Vector2Int FillRoomOrHallway(bool[,] groundData, Vector2Int position, Direction direction)
     {
         Vector2Int endPosition;
 
@@ -110,7 +146,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return endPosition;
     }
 
-    private Vector2Int FillHallway(bool[,] groundData, Vector2Int position, Direction direction, int length, int width = 3)
+    private static Vector2Int FillHallway(bool[,] groundData, Vector2Int position, Direction direction, int length, int width = 3)
     {
 
         Vector2Int offset = new Vector2Int(0, 0);
@@ -136,7 +172,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return new Vector2Int(position.x + offset.x, position.y + offset.y); 
     }
 
-    private Vector2Int FillRoom(bool[,] groundData, Vector2Int position, Direction direction, int width, int height)
+    private static Vector2Int FillRoom(bool[,] groundData, Vector2Int position, Direction direction, int width, int height)
     {
         Vector2Int offset = new Vector2Int(0, 0);
 

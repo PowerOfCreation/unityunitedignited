@@ -14,7 +14,7 @@ public class RangeEnemy : EnemyController
             if(Vector2.Distance(transform.position, player.position) > atkRange){
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }else{
-                if(timer >= atkDelay && Vector2.Distance(transform.position, player.position) <= atkRange && player.GetComponentInChildren<Health>()){
+                if(timer >= atkDelay && Vector2.Distance(transform.position, player.position) <= atkRange && player.GetComponentInChildren<PlayerHealth>()){
                     Vector2 shootDirection = player.position - shootPoint.position;
                     float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
                     Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);

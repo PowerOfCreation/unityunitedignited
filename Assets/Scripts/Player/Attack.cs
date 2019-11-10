@@ -40,7 +40,7 @@ public class Attack : MonoBehaviour
             IDamagable damagable = hit.gameObject.GetComponent<IDamagable>();
             if (damagable != null)
             {
-                damagable.GetDamage(attackDamage);
+                damagable.GetDamage(attackDamage, transform);
             }
         }
         attackCooldown = attackRate;

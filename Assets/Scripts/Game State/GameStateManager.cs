@@ -30,7 +30,7 @@ public class GameStateManager : Singleton<GameStateManager>
             movement.enabled = false;
             player.GetComponent<Attack>().enabled = false;
 
-            GameOverCanvas.SetActive(true);
+            GameOverCanvas.GetComponent<CanvasGroup>().Show();
         }
     }
 

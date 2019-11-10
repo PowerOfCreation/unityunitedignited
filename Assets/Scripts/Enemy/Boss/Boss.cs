@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Animator _Anim;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    private void Start() {_Anim = GetComponent<Animator>();}
+
+    public void FoundPlayer(){_Anim.SetTrigger("CHASING");}
 }

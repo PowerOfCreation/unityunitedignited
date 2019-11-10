@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PickupAlcohol : MonoBehaviour
 {
+    public static int healAmount = 1;
+
     void OnTriggerEnter2D( )
     {
-        Debug.Log("Alcohol taken");
+        GameManager.Instance.GetLocalPlayer().GetComponentInChildren<PlayerHealth>().Heal(healAmount);
         Destroy(gameObject);
     }
 }

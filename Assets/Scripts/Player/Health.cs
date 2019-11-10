@@ -1,6 +1,6 @@
-﻿// using System;
-// using System.Collections;
-// using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable
@@ -10,25 +10,35 @@ public class Health : MonoBehaviour, IDamagable
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2D;
     private bool tookDamage = false;
-    private int damageTime = 20;
+    private float damageTime = .1f;
+    public AudioClip _takeDamage;
+    public GameObject deadPrefab;
+    public ParticleSystem deadEffect;
+    public ParticleSystem takeDamageEffect;
 
     private GameObject player;
+    private AudioSource _AudioSource;
 
-    public virtual void GetDamage(int damage)
+    private void Awake() {
+        _AudioSource = GetComponent<AudioSource>();
+    }
+
+    public virtual void GetDamage(int damage, Transform attackerTransform)
     {
-        //Go Red When Hit
-        spriteRenderer.color = new Color(1, 0, 0);
+        foreach (IStunable stuneable in GetComponentsInChildren<IStunable>())
+        {
+            stuneable.Freeze();
+        }
+
+        spriteRenderer.color = Color.red;
         tookDamage = true;
-        //Take Damage
         health -= damage;
         if (health <= 0) 
         {
             Die();
         }
         //Kockback
-        rigidbody2D.AddForce(transform.forward * 5000);
-
-        Debug.Log("Schaden!!!");
+        rigidbody2D.AddForce((transform.position - attackerTransform.position).normalized * 500);
     }
 
     public virtual void Die()
@@ -47,12 +57,17 @@ public class Health : MonoBehaviour, IDamagable
     {
         if (tookDamage)
         {
-            damageTime--;
+            damageTime -= Time.deltaTime;
+
             if (damageTime <= 0)
             {
+                foreach (IStunable stuneable in GetComponentsInChildren<IStunable>())
+                {
+                    stuneable.Unfreeze();
+                }
                 spriteRenderer.color = Color.white;
                 tookDamage = false;
-                damageTime = 20;
+                damageTime = .1f;
             }
         }
     }
