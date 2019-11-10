@@ -6,6 +6,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
 {
     public List<GameObject> groundPrefabs = new List<GameObject>();
     public GameObject enemyPrefab;
+    public GameObject alcoholPrefab;
     public GameObject wallPrefab;
     public GameObject exitLevelPrefab;
 
@@ -14,7 +15,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         GenerateLevel(200, 200);
     }
 
-    public void GenerateLevel(int width, int height)
+    private void GenerateLevel(int width, int height)
     {
         bool[,] groundData = new  bool[width, height];
 
@@ -38,32 +39,35 @@ public class LevelGenerator : Singleton<LevelGenerator>
             }
         }
 
-        SpawnEnemies(groundData, 10);
+        SpawnGameObjectOnGround(groundData, 10, enemyPrefab);
+        SpawnGameObjectOnGround(groundData, 10, alcoholPrefab);
 
         GameObject.Instantiate(exitLevelPrefab, new Vector3(lastPosition.x, lastPosition.y, -1), Quaternion.identity);
 
         GetComponent<CompositeCollider2D>().GenerateGeometry();
     }
 
-    private void SpawnEnemies(bool[,] groundData, int amount)
+    private void SpawnGameObjectOnGround(bool[,] groundData, int amount, GameObject gameObjectToSpawn)
     {
         for (int i = 0; i < amount; i++)
         {
-            Vector2Int position = GetRandomGroundPosition(groundData);
-            GameObject.Instantiate(enemyPrefab, new Vector3(position.x, position.y, -1), Quaternion.identity);
+            Vector2Int position = GetRandomGroundPositionAwayFromPoint(groundData, GameManager.Instance.GetLocalPlayer().position, GameManager.Instance.minDistanceOfObjectsToPlayer);
+            GameObject.Instantiate(gameObjectToSpawn, new Vector3(position.x, position.y, -1), Quaternion.identity);
         }
     }
 
-    private Vector2Int GetRandomGroundPosition(bool[,] groundData)
+    private static Vector2Int GetRandomGroundPositionAwayFromPoint(bool[,] groundData, Vector2 point, float minDistanceToPoint)
     {
         while(true)
         {
             int posX = Random.Range(0, groundData.GetLength(0));
             int posY = Random.Range(0, groundData.GetLength(1));
             
-            if(groundData[posX, posY])
+            Vector2Int pointToTest = new Vector2Int(posX, posY);
+            
+            if(groundData[posX, posY] && Vector2.Distance(pointToTest, point) > minDistanceToPoint)
             {
-                return new Vector2Int(posX, posY);
+                return pointToTest;
             }
         }
     }
@@ -94,7 +98,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return endPosition;
     }
 
-    private Vector2Int FillRoomOrHallway(bool[,] groundData, Vector2Int position, Direction direction)
+    private static Vector2Int FillRoomOrHallway(bool[,] groundData, Vector2Int position, Direction direction)
     {
         Vector2Int endPosition;
 
@@ -110,7 +114,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return endPosition;
     }
 
-    private Vector2Int FillHallway(bool[,] groundData, Vector2Int position, Direction direction, int length, int width = 3)
+    private static Vector2Int FillHallway(bool[,] groundData, Vector2Int position, Direction direction, int length, int width = 3)
     {
 
         Vector2Int offset = new Vector2Int(0, 0);
@@ -136,7 +140,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return new Vector2Int(position.x + offset.x, position.y + offset.y); 
     }
 
-    private Vector2Int FillRoom(bool[,] groundData, Vector2Int position, Direction direction, int width, int height)
+    private static Vector2Int FillRoom(bool[,] groundData, Vector2Int position, Direction direction, int width, int height)
     {
         Vector2Int offset = new Vector2Int(0, 0);
 

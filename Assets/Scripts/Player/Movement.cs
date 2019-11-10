@@ -12,29 +12,27 @@ public class Movement : MonoBehaviour
 
     int walkId;
 
-    void Start()
+    private void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         walkId = Animator.StringToHash("walking");
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-        Vector2 moveDirection = gameObject.GetComponent<Rigidbody2D>().velocity;
+        Vector2 moveDirection = rigidbody2d.velocity;
+
+        animator.SetBool(walkId, moveVertical != 0);
 
         if (moveDirection != Vector2.zero)
         {
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             playerSprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            animator.SetBool(walkId, true);
         }
-        else
-        {
-            animator.SetBool(walkId, false);
-        }
+        
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
     }
 }
