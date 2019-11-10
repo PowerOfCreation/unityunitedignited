@@ -22,7 +22,7 @@ public class PulsingLightRadius : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float sinTime = Mathf.Sin(Time.fixedTime * pulsingSpeed);
+        float sinTime = Mathf.Abs(Mathf.Sin(Time.fixedTime * pulsingSpeed));
         _light.range = this.startRadius + sinTime * pulsingRange;
     }
 }
