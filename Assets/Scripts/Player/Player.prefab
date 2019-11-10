@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackHolder: {fileID: 5453898768076068505}
   attackRadius: 1
-  attackDamage: 5
+  attackDamage: 1
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -359,7 +359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
-  playerHealth: 10
 --- !u!1001 &67228736
 PrefabInstance:
   m_ObjectHideFlags: 0

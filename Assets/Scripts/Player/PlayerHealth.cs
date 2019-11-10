@@ -11,7 +11,7 @@ public class PlayerHealth : Health, IDamagable
         maxPlayerHealth = health;
     }
 
-    public override void GetDamage(int damage)
+    public override void GetDamage(int damage, Transform attackerTransform)
     {
         health -= damage;
         UpdateHealthSlider();

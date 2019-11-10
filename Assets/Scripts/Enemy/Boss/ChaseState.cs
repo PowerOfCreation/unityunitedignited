@@ -29,7 +29,7 @@ public class ChaseState : StateMachineBehaviour
             if(Vector2.Distance(animator.transform.position, _Player.transform.position) > atkRange){
                 animator.transform.position = Vector2.MoveTowards(animator.transform.position, _Player.transform.position, chaseSpeed * Time.deltaTime);
             }else{
-                _PlayerHealth.GetDamage(damage);
+                _PlayerHealth.GetDamage(damage, null);
                 timer=0f;
             }
             if(stimer > summonDelay){

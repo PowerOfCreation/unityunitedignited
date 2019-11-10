@@ -14,21 +14,22 @@ public class Health : MonoBehaviour, IDamagable
 
     private GameObject player;
 
-    public virtual void GetDamage(int damage)
+    public virtual void GetDamage(int damage, Transform attackerTransform)
     {
-        //Go Red When Hit
-        spriteRenderer.color = new Color(1, 0, 0);
+        foreach (IStunable stuneable in GetComponentsInChildren<IStunable>())
+        {
+            stuneable.Freeze();
+        }
+
+        spriteRenderer.color = Color.red;
         tookDamage = true;
-        //Take Damage
         health -= damage;
         if (health <= 0) 
         {
             Die();
         }
         //Kockback
-        rigidbody2D.AddForce(transform.forward * 5000);
-
-        Debug.Log("Schaden!!!");
+        rigidbody2D.AddForce((transform.position - attackerTransform.position).normalized * 500);
     }
 
     public virtual void Die()
@@ -51,6 +52,10 @@ public class Health : MonoBehaviour, IDamagable
 
             if (damageTime <= 0)
             {
+                foreach (IStunable stuneable in GetComponentsInChildren<IStunable>())
+                {
+                    stuneable.Unfreeze();
+                }
                 spriteRenderer.color = Color.white;
                 tookDamage = false;
                 damageTime = .1f;
