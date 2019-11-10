@@ -104,6 +104,8 @@ MonoBehaviour:
   speed: 2000
   playerSprite: {fileID: 5404900300740368101}
   animator: {fileID: 7591388224172179172}
+  dashSpeed: 0
+  startDashTime: 0
 --- !u!114 &7035877609235400204
 MonoBehaviour:
   m_ObjectHideFlags: 0
