@@ -14,7 +14,7 @@ public class Movement : MonoBehaviour
     int walkId;
 
     private float dashSpeed = 50f;
-    private float dashCooldown = 1f;
+    private float dashCooldown = 10f;
     private float startDashTime = 0f;
 
     private void Start()
@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             playerSprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
-        
+
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
 
         if (Time.time > startDashTime + dashCooldown)
