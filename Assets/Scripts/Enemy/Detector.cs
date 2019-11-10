@@ -5,11 +5,15 @@ using UnityEngine;
 public class Detector : MonoBehaviour
 {
     public bool isMelee;
+    public bool isBoss;
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
-            //Chase Player
             if(isMelee){
-                GetComponentInParent<MeleeEnemy>().player = other.transform;
+                if(isBoss){
+                    GetComponentInParent<Boss>().FoundPlayer();
+                }else{
+                    GetComponentInParent<MeleeEnemy>().player = other.transform;
+                }
             }else{
                 GetComponentInParent<RangeEnemy>().player = other.transform;
             }
