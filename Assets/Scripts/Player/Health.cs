@@ -1,6 +1,6 @@
-﻿// using System;
-// using System.Collections;
-// using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamagable
@@ -11,8 +11,17 @@ public class Health : MonoBehaviour, IDamagable
     private Rigidbody2D rigidbody2D;
     private bool tookDamage = false;
     private float damageTime = .1f;
+    public AudioClip _takeDamage;
+    public GameObject deadPrefab;
+    public ParticleSystem deadEffect;
+    public ParticleSystem takeDamageEffect;
 
     private GameObject player;
+    private AudioSource _AudioSource;
+
+    private void Awake() {
+        _AudioSource = GetComponent<AudioSource>();
+    }
 
     public virtual void GetDamage(int damage, Transform attackerTransform)
     {

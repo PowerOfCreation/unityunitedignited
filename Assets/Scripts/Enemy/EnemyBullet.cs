@@ -26,7 +26,7 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player"){
-            _Player.GetComponentInChildren<Health>().GetDamage(damage, transform);
+            _Player.GetComponentInChildren<PlayerHealth>().GetDamage(damage, transform);
         }
     }
 }

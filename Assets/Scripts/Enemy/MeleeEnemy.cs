@@ -24,8 +24,8 @@ public class MeleeEnemy : EnemyController, IStunable
             if(Vector2.Distance(transform.position, player.position) > atkRange){
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }else{
-                if(timer >= atkDelay && Vector2.Distance(transform.position, player.position) <= atkRange && player.GetComponentInChildren<Health>()){
-                    player.GetComponentInChildren<Health>().GetDamage(damage, transform);
+                if(timer >= atkDelay && Vector2.Distance(transform.position, player.position) <= atkRange && player.GetComponentInChildren<PlayerHealth>()){
+                    player.GetComponentInChildren<PlayerHealth>().GetDamage(damage, transform);
                     timer = 0f;
                 } 
             }
