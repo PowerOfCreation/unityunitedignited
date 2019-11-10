@@ -1,22 +1,26 @@
 # Mechanics: #
 [X] Movement - Nicolas
-[ ] Attack, Getting damage, Dealing damage - Nicolas
-[ ] healing - alcohol - Yiming
-[ ] game over - Nicolas
-[ ] game state manager
-[ ] boss fight 
-[ ] enemy AI
-[ ] boss AI
-[ ] change levels
+[X] Attack, Getting damage, Dealing damage - Nicolas
+[X] healing - alcohol - Yiming
+[X] game over - Nicolas
+[X] game state manager _ nicolas
+[ ] boss level -  Nicolas
+[/] enemy AI - Linq
+[/] boss AI - Linq
+[ ] change levels - Niklas
 [ ] randomly generating levels - niklas
-[ ] user interface: Linh
+[X] user interface: Nicolas
+[ ] play figs animation - Niklas
+[ ] stamina bar - Niklas
+[ ] play sounds - Linq
+[ ] show text/dialog - Linq
 
-# Grafiken: # 
-[ ] player Lars
-[ ] boss
+# Graphics: # 
+[X] player Lars
+[ ] boss Lars
 [X] floor LARS
-[ ] wall LARS
+[X] wall LARS
 [X] alcohol Yiming
 [X] torch Yiming
 [X] fire Yiming
-[-] feigen: LARS
+[X] feigen: LARS
