@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : Singleton<LevelGenerator>
 {
-    public List<GameObject> groundPrefabs = new List<GameObject>();
+    public List<RandomPrefabSpawn> groundPrefabs = new List<RandomPrefabSpawn>();
     public GameObject enemyPrefab;
     public GameObject alcoholPrefab;
     public GameObject wallPrefab;
@@ -30,7 +30,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
             {
                 if(groundData[x, y] == true)
                 {
-                    GameObject.Instantiate(GetGroundPrefab(), new Vector3(x, y, 1), Quaternion.identity, transform);
+                    GameObject.Instantiate(GetRandomPrefab(groundPrefabs), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
                 else if(HasAdjacentFloorTile(groundData, new Vector2Int(x, y)))
                 {
@@ -84,9 +84,29 @@ public class LevelGenerator : Singleton<LevelGenerator>
         }
     }
 
-    private GameObject GetGroundPrefab()
+    private GameObject GetRandomPrefab(List<RandomPrefabSpawn> randomPrefabSpawns)
     {
-        return groundPrefabs[Random.Range(0, groundPrefabs.Count)];
+        int totalWeight = 0;
+
+        for (int i = 0; i < randomPrefabSpawns.Count; i++)
+        {
+            totalWeight += randomPrefabSpawns[i].weight;
+        }
+
+        int choosenWeight = Random.Range(0, totalWeight);
+        int currentWeight = 0;
+
+        for (int i = 0; i < randomPrefabSpawns.Count; i++)
+        {
+            currentWeight += randomPrefabSpawns[i].weight;
+
+            if(choosenWeight < currentWeight)
+            {
+                return randomPrefabSpawns[i].prefab;
+            }
+        }
+
+        return null;
     }
 
     private Vector2Int StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft)
