@@ -29,7 +29,7 @@ public class GameStateManager : Singleton<GameStateManager>
             movement.playerSprite.gameObject.SetActive(false);
             movement.enabled = false;
             player.GetComponent<Attack>().enabled = false;
-
+            player.GetComponent<AudioSource>().enabled = false;
             GameOverCanvas.GetComponent<CanvasGroup>().Show();
         }
     }
