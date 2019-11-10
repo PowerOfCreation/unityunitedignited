@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: a4370ccb97b0459418662a9fca060ce1
+guid: afb1c70a77bd47588a0a2ca063979cda
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -909630148836005641
-    second: feige_0
+      213: 2868539044483428322
+    second: wall_0
   - first:
-      213: -7707767913485123627
-    second: feige_1
+      213: -5107677499478342438
+    second: wall_1
   - first:
-      213: -1246430064350023160
-    second: feige_2
-  - first:
-      213: -7267525148364552420
-    second: feige_3
-  - first:
-      213: 6362940314905646498
-    second: feige_4
-  - first:
-      213: -5114638788249045261
-    second: feige_5
+      213: 6451264694632907309
+    second: wall_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,70 +95,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: feige_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5feab999227fee520b3446a19bca3a22
-      internalID: -909630148836005641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: feige_1
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e124b066a1efe0438a04d4c0cf3e4b33
-      internalID: -7707767913485123627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: feige_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 62c439f00ed9e2c4d8cd00a22717f3eb
-      internalID: -1246430064350023160
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: feige_3
+      name: wall_0
       rect:
         serializedVersion: 2
         x: 0
@@ -181,14 +109,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe8e85b29f1b1a314b1eb6f3a83ba9a7
-      internalID: -7267525148364552420
+      spriteID: 932abf9a1893ebc61a3b7d0fb72445d0
+      internalID: 2868539044483428322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: feige_4
+      name: wall_1
       rect:
         serializedVersion: 2
         x: 64
@@ -202,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a339669be6795885924d58e73ab4f74
-      internalID: 6362940314905646498
+      spriteID: 283cac97b0f8524e5926229a05aaac60
+      internalID: -5107677499478342438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: feige_5
+      name: wall_2
       rect:
         serializedVersion: 2
         x: 128
@@ -223,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c654fd892b6927bd3a82f39d17418fb3
-      internalID: -5114638788249045261
+      spriteID: 8dfa339222026a1e980ca2b565971e80
+      internalID: 6451264694632907309
       vertices: []
       indices: 
       edges: []
