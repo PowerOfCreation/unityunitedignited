@@ -12,23 +12,23 @@ public class LevelGenerator : Singleton<LevelGenerator>
 
     public void Start()
     {
-        GenerateLevel(200, 200);
+        GameManager.Instance.RegisterLevelGenerator(this);
     }
 
-    private void GenerateLevel(int width, int height)
+    public void GenerateLevel(int width, int height, int iterations, float newBranchProbability, int enemyAmount, int alcoholAmount)
     {
         bool[,] groundData = new  bool[width, height];
 
         int startPositionX = width / 2;
         int startPositionY = height / 2;
 
-        Vector2Int lastPosition = StartBranch(groundData, new Vector2Int(startPositionX, startPositionY), new Direction(), 16);
+        Vector2Int lastPosition = StartBranch(groundData, new Vector2Int(startPositionX, startPositionY), new Direction(), iterations, newBranchProbability);
 
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
             {
-                if(groundData[x, y] == true)
+                if(groundData[x, y] == true && groundData.GetLength(0) > x + 1 && groundData.GetLength(1) > y + 1 && x > 0 && y > 0)
                 {
                     GameObject.Instantiate(GetRandomPrefab(groundPrefabs), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
@@ -39,8 +39,8 @@ public class LevelGenerator : Singleton<LevelGenerator>
             }
         }
 
-        SpawnGameObjectOnGround(groundData, 10, enemyPrefab);
-        SpawnGameObjectOnGround(groundData, 10, alcoholPrefab);
+        SpawnGameObjectOnGround(groundData, enemyAmount, enemyPrefab);
+        SpawnGameObjectOnGround(groundData, alcoholAmount, alcoholPrefab);
 
         GameObject.Instantiate(exitLevelPrefab, new Vector3(lastPosition.x, lastPosition.y, -1), Quaternion.identity);
 
@@ -109,7 +109,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
         return null;
     }
 
-    private Vector2Int StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft)
+    private Vector2Int StartBranch(bool[,] groundData, Vector2Int position, Direction direction, int iterationsLeft, float newBranchProbability)
     {
         Vector2Int endPosition = position;
 
@@ -117,14 +117,14 @@ public class LevelGenerator : Singleton<LevelGenerator>
         {
             endPosition = FillRoomOrHallway(groundData, position, direction);
             
-            if(Random.Range(0f , 1f) >= 0.5f)
+            if(Random.Range(0f , 1f) < newBranchProbability)
             {
                 Vector2Int halfPosition = position + ((endPosition - position).Divide(2f));
 
-                StartBranch(groundData, halfPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
+                StartBranch(groundData, halfPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1, newBranchProbability);
             }
 
-            endPosition = StartBranch(groundData, endPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1);
+            endPosition = StartBranch(groundData, endPosition, direction.RandomlyRotateLeftOrRightAndCreateNewDirection(), iterationsLeft - 1, newBranchProbability);
         }
 
         return endPosition;
