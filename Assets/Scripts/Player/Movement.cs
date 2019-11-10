@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     public Transform playerSprite;
     public Animator animator;
     private Rigidbody2D rigidbody2d;
+    private AudioSource _AudioSource;
 
     int walkId;
 
@@ -20,6 +21,7 @@ public class Movement : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         walkId = Animator.StringToHash("walking");
+        _AudioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -29,6 +31,11 @@ public class Movement : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         Vector2 moveDirection = rigidbody2d.velocity;
 
+        if(moveHorizontal == 0 && moveVertical == 0){
+            _AudioSource.Pause();
+        }else{
+            _AudioSource.UnPause();
+        }
         animator.SetBool(walkId, moveVertical != 0 || moveHorizontal != 0);
 
         if (moveDirection != Vector2.zero)
