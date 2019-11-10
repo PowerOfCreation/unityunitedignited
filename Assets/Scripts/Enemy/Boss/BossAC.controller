@@ -17,7 +17,7 @@ MonoBehaviour:
   summonDelay: 3
   damage: 5
   enemyPrefab:
-  - {fileID: 552460794600930660, guid: 29975a429c94bce4ca138a00d519194b, type: 3}
+  - {fileID: 552460794600930660, guid: d369d98fceb56e45dbfdadd5542dde07, type: 3}
   - {fileID: 1482533931087035070, guid: 254faeb2ad30fa340befa45ce67b8241, type: 3}
 --- !u!1101 &-4191269555333055366
 AnimatorStateTransition:
@@ -113,13 +113,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: PATROL
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer

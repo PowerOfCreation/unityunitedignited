@@ -36,6 +36,8 @@ public class PlayerHealth : Health, IDamagable
 
     protected virtual void UpdateHealthSlider()
     {
-        HealthSlider.self.slider.value = health; 
+        if(HealthSlider.self){
+            HealthSlider.self.slider.value = health; 
+        }
     }
 }
