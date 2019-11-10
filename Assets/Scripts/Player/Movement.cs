@@ -13,7 +13,11 @@ public class Movement : MonoBehaviour
 
     int walkId;
 
-    private void Start()
+    private float dashSpeed = 50f;
+    private float dashCooldown = 1f;
+    private float startDashTime = 0f;
+
+    void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         walkId = Animator.StringToHash("walking");
@@ -39,7 +43,16 @@ public class Movement : MonoBehaviour
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             playerSprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
-        
+
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
+
+        if (Time.time > startDashTime + dashCooldown)
+        {
+            if (Input.GetButtonDown("Shift"))
+            {
+                startDashTime = Time.time;
+                rigidbody2d.velocity = playerSprite.up * dashSpeed;
+            }
+        }
     }
 }

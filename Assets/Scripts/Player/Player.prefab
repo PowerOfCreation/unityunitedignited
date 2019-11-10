@@ -87,7 +87,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2564863764567576596
 MonoBehaviour:
@@ -119,6 +119,7 @@ MonoBehaviour:
   attackHolder: {fileID: 5453898768076068505}
   attackRadius: 1
   attackDamage: 1
+  attackRate: 120
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -457,12 +458,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980e43dede775c34dbfbf30f139d8703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   health: 1000
   takeDamage: {fileID: 8300000, guid: 2def8afa5d32d8f4497b433d888be97a, type: 3}
+=======
+  health: 10
+  _takeDamage: {fileID: 0}
+>>>>>>> c8c3ced946d461f14af08f1ec941a13197ff7ced
   deadPrefab: {fileID: 0}
   deadEffect: {fileID: 0}
   takeDamageEffect: {fileID: 0}
   hurtPanel: {fileID: 0}
+<<<<<<< HEAD
   healSoundFx: {fileID: 8300000, guid: be309b42fd3573b4aae59b06541d7d76, type: 3}
 --- !u!96 &1130731633
 TrailRenderer:
@@ -665,6 +672,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+>>>>>>> c8c3ced946d461f14af08f1ec941a13197ff7ced
 --- !u!1001 &67228736
 PrefabInstance:
   m_ObjectHideFlags: 0

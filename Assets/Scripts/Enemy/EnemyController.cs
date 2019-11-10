@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
     public int damage = 1;
     private int health;
 
-    [HideInInspector]
     public Transform player;
 
     public virtual void Start() {

@@ -18,9 +18,13 @@ public class Health : MonoBehaviour, IDamagable
 
     private GameObject player;
     private AudioSource _AudioSource;
+    private Animator animator;
+    private int deathHash;
 
     private void Awake() {
         _AudioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        deathHash = Animator.StringToHash("Death");
     }
 
     public virtual void GetDamage(int damage, Transform attackerTransform)
@@ -46,6 +50,11 @@ public class Health : MonoBehaviour, IDamagable
     }
 
     public virtual void Die()
+    {
+        animator.SetTrigger(deathHash);
+    }
+
+    public virtual void OnDeath()
     {
         Destroy(gameObject);
     }

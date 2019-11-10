@@ -14,9 +14,12 @@ public class LevelExit : MonoBehaviour
         openDoorTriggerId = Animator.StringToHash("Open");
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D collider2D)
     {
-        animator.SetTrigger(openDoorTriggerId);
+        if(collider2D.tag == "Player")
+        {
+            animator.SetTrigger(openDoorTriggerId);
+        }
     }
 
     public void DoorOpened()

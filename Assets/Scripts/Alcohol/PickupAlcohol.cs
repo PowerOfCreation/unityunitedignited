@@ -6,9 +6,12 @@ public class PickupAlcohol : MonoBehaviour
 {
     public static int healAmount = 1;
 
-    void OnTriggerEnter2D( )
+    void OnTriggerEnter2D(Collider2D collider2D)
     {
-        GameManager.Instance.GetLocalPlayer().GetComponentInChildren<PlayerHealth>().Heal(healAmount);
-        Destroy(gameObject);
+        if(collider2D.tag == "Player")
+        {
+            GameManager.Instance.GetLocalPlayer().GetComponentInChildren<PlayerHealth>().Heal(healAmount);
+            Destroy(gameObject);
+        }
     }
 }

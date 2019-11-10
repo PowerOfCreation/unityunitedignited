@@ -10,14 +10,20 @@ public class Attack : MonoBehaviour
 
     public int attackDamage = 5;
 
+    public int attackRate = 300;
+
+    private int attackCooldown = 0;
+
     public LayerMask enemyLayerMask;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump"))
+        attackCooldown--;
+        
+        if (Input.GetButtonDown("Jump") && attackCooldown <= 0)
         {
-            PerformAttack();
+                PerformAttack();
         }
     }
 
@@ -32,5 +38,6 @@ public class Attack : MonoBehaviour
                 damagable.GetDamage(attackDamage, transform);
             }
         }
+        attackCooldown = attackRate;
     }
 }

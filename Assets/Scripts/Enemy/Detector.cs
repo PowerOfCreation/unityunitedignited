@@ -6,28 +6,41 @@ public class Detector : MonoBehaviour
 {
     public bool isMelee;
     public bool isBoss;
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "Player"){
-            if(isMelee){
-                if(isBoss){
-                    GetComponentInParent<Boss>().FoundPlayer();
-                }else{
-                    GetComponentInParent<MeleeEnemy>().player = other.transform;
-                }
-            }else{
-                GetComponentInParent<RangeEnemy>().player = other.transform;
-            }
-        }
+
+    public float detectionRange = 3f;
+
+    public static Transform playerTransform;
+    public EnemyController enemyController;
+
+    private void Start()
+    {
+        playerTransform = GameManager.Instance.GetLocalPlayer();
+        enemyController = GetComponentInParent<EnemyController>();
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.tag == "Player"){
-            //Lose Player
-            if(isMelee){
-                GetComponentInParent<MeleeEnemy>().player = null;
-            }else{
-                GetComponentInParent<RangeEnemy>().player = null;
+    private void Update()
+    {
+        if(Vector3.Distance(playerTransform.position, transform.position) < detectionRange)
+        {
+            if(isMelee)
+            {
+                if(isBoss)
+                {
+                    GetComponentInParent<Boss>().FoundPlayer();
+                }
+                else
+                {
+                    enemyController.player = playerTransform;
+                }
             }
+            else
+            {
+                enemyController.player = playerTransform;
+            }
+        }
+        else
+        {
+            enemyController.player = null;
         }
     }
 }
