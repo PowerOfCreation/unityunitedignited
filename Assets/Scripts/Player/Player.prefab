@@ -86,7 +86,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2564863764567576596
 MonoBehaviour:
@@ -176,7 +176,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -360,6 +360,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  _takeDamage: {fileID: 0}
+  deadPrefab: {fileID: 0}
+  deadEffect: {fileID: 0}
+  takeDamageEffect: {fileID: 0}
+  hurtPanel: {fileID: 0}
 --- !u!1001 &67228736
 PrefabInstance:
   m_ObjectHideFlags: 0
