@@ -103,6 +103,8 @@ MonoBehaviour:
   speed: 2000
   playerSprite: {fileID: 5404900300740368101}
   animator: {fileID: 7591388224172179172}
+  dashSpeed: 0
+  startDashTime: 0
 --- !u!114 &7035877609235400204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,8 +119,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackHolder: {fileID: 5453898768076068505}
   attackRadius: 1
-  attackRate: 120
   attackDamage: 1
+  attackRate: 120
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
@@ -360,6 +362,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  _takeDamage: {fileID: 0}
+  deadPrefab: {fileID: 0}
+  deadEffect: {fileID: 0}
+  takeDamageEffect: {fileID: 0}
+  hurtPanel: {fileID: 0}
 --- !u!1001 &67228736
 PrefabInstance:
   m_ObjectHideFlags: 0

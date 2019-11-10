@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 535f8e525ff367c4ba67961e201a05ed, type: 3}
-  m_Name: rand
+  m_Script: {fileID: 11500000, guid: 52f942ca9511f354a8efbf325740f4ab, type: 3}
+  m_Name: WallsRndm
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -34,4 +34,13 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 1
-  m_Sprites: []
+  Sprites:
+  - Sprite: {fileID: 2868539044483428322, guid: afb1c70a77bd47588a0a2ca063979cda,
+      type: 3}
+    Weight: 40
+  - Sprite: {fileID: -5107677499478342438, guid: afb1c70a77bd47588a0a2ca063979cda,
+      type: 3}
+    Weight: 5
+  - Sprite: {fileID: 6451264694632907309, guid: afb1c70a77bd47588a0a2ca063979cda,
+      type: 3}
+    Weight: 5
