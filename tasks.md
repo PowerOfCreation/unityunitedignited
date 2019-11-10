@@ -8,7 +8,7 @@
 [/] enemy AI - Linq
 [/] boss AI - Linq
 [ ] change levels - Niklas
-[ ] randomly generating levels - niklas
+[X] randomly generating levels - niklas
 [X] user interface: Nicolas
 [X] play figs animation - Niklas
 [ ] stamina bar - Niklas
@@ -17,11 +17,11 @@
 
 # Graphics: # 
 [X] player Lars
-[ ] boss Lars
+[X] boss Lars
 [X] floor LARS
 [X] wall LARS
 [X] alcohol Yiming
 [X] torch Yiming
 [X] fire Yiming
 [X] feigen: LARS
-[ ] trap Yiming
+[X] trap Yiming
