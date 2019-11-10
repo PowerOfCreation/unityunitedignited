@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Niklas.unity
     guid: 00c0d9a2b7cb50bc19f27e77ceba182c
+  - enabled: 1
+    path: Assets/Scenes/BossLevel.unity
+    guid: 654c0547e3186644dad5441802ee0521
   m_configObjects: {}
