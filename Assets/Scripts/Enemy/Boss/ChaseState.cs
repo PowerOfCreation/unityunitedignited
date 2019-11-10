@@ -40,6 +40,8 @@ public class ChaseState : StateMachineBehaviour
                 }
             }
        }
+
+       animator.transform.position = new Vector3(animator.transform.position.x, animator.transform.position.y, -1);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -20,7 +20,7 @@ public class Detector : MonoBehaviour
 
     private void Update()
     {
-        if(Vector3.Distance(playerTransform.position, transform.position) < detectionRange)
+        if(Vector3.Distance(Player.self.transform.position, transform.position) < detectionRange)
         {
             if(isMelee)
             {
@@ -40,7 +40,10 @@ public class Detector : MonoBehaviour
         }
         else
         {
-            enemyController.player = null;
+            if(enemyController != null)
+            {
+                enemyController.player = null;
+            }
         }
     }
 }
