@@ -11,16 +11,20 @@ public class Health : MonoBehaviour, IDamagable
     private Rigidbody2D rigidbody2D;
     private bool tookDamage = false;
     private float damageTime = .1f;
-    public AudioClip _takeDamage;
+    public AudioClip takeDamage;
     public GameObject deadPrefab;
     public ParticleSystem deadEffect;
     public ParticleSystem takeDamageEffect;
 
     private GameObject player;
     private AudioSource _AudioSource;
+    private Animator animator;
+    private int deathHash;
 
     private void Awake() {
         _AudioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+        deathHash = Animator.StringToHash("Death");
     }
 
     public virtual void GetDamage(int damage, Transform attackerTransform)
@@ -33,6 +37,10 @@ public class Health : MonoBehaviour, IDamagable
         spriteRenderer.color = Color.red;
         tookDamage = true;
         health -= damage;
+        if(takeDamageEffect) takeDamageEffect.Play();
+        if(takeDamage) {
+            _AudioSource.PlayOneShot(takeDamage, 0.5F);
+        }
         if (health <= 0) 
         {
             Die();
@@ -42,6 +50,11 @@ public class Health : MonoBehaviour, IDamagable
     }
 
     public virtual void Die()
+    {
+        animator.SetTrigger(deathHash);
+    }
+
+    public virtual void OnDeath()
     {
         Destroy(gameObject);
     }

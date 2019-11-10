@@ -6,6 +6,6 @@ public class RestartButton : MonoBehaviour
 {
     public void OnClick()
     {
-        GameStateManager.Instance.RestartGame();
+        GameManager.Instance.StartGame();
     }
 }

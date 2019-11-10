@@ -9,17 +9,19 @@ public class Movement : MonoBehaviour
     public Transform playerSprite;
     public Animator animator;
     private Rigidbody2D rigidbody2d;
-
-    public float dashSpeed;
-    private float dashTime;
-    public float startDashTime;
+    private AudioSource _AudioSource;
 
     int walkId;
 
-    private void Start()
+    private float dashSpeed = 50f;
+    private float dashCooldown = 1f;
+    private float startDashTime = 0f;
+
+    void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         walkId = Animator.StringToHash("walking");
+        _AudioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -29,6 +31,11 @@ public class Movement : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         Vector2 moveDirection = rigidbody2d.velocity;
 
+        if(moveHorizontal == 0 && moveVertical == 0){
+            _AudioSource.Pause();
+        }else{
+            _AudioSource.UnPause();
+        }
         animator.SetBool(walkId, moveVertical != 0 || moveHorizontal != 0);
 
         if (moveDirection != Vector2.zero)
@@ -36,32 +43,15 @@ public class Movement : MonoBehaviour
             float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
             playerSprite.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         }
-        
+
         rigidbody2d.AddForce(movement * speed * Time.deltaTime);
 
-        if (dashTime < 0)
+        if (Time.time > startDashTime + dashCooldown)
         {
-            dashTime = startDashTime;
-            rigidbody2d.velocity = Vector2.zero;
-        }
-        else
-        {
-            dashTime -= Time.deltaTime;
-            if (Input.GetButtonDown("Shift") && moveDirection.x > 0)
+            if (Input.GetButtonDown("Shift"))
             {
-                rigidbody2d.velocity = Vector2.right * dashSpeed;
-            }
-            else if (Input.GetButtonDown("Shift") && moveDirection.x < 0)
-            {
-                rigidbody2d.velocity = Vector2.left * dashSpeed;
-            }
-            else if (Input.GetButtonDown("Shift") && moveDirection.y > 0)
-            {
-                rigidbody2d.velocity = Vector2.up * dashSpeed;
-            }
-            else if (Input.GetButtonDown("Shift") && moveDirection.y < 0)
-            {
-                rigidbody2d.velocity = Vector2.up * dashSpeed;
+                startDashTime = Time.time;
+                rigidbody2d.velocity = playerSprite.up * dashSpeed;
             }
         }
     }

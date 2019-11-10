@@ -6,16 +6,21 @@ public class PlayerHealth : Health, IDamagable
 {
     private int maxPlayerHealth;
     public GameObject hurtPanel;
-
+    public AudioClip healSoundFx;
+    private AudioSource _audioSource;
     public void Start()
     {
         maxPlayerHealth = health;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public override void GetDamage(int damage, Transform attackerTransform)
     {
         health -= damage;
         UpdateHealthSlider();
+        if(takeDamage) {
+            _audioSource.PlayOneShot(takeDamage, 0.4F);
+        }
         if(hurtPanel){
             hurtPanel.GetComponent<HurtPanelController>().Show();
         }
@@ -29,6 +34,7 @@ public class PlayerHealth : Health, IDamagable
     {
         health += amount;
         health = (health > maxPlayerHealth)?maxPlayerHealth:health;
+        if(healSoundFx) _audioSource.PlayOneShot(healSoundFx, .5f);
         UpdateHealthSlider();
     }
 
