@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Prototype.unity
     guid: bf0c617ff898c1248b18594b0b885024
+  - enabled: 1
+    path: Assets/Scenes/Niklas.unity
+    guid: 00c0d9a2b7cb50bc19f27e77ceba182c
   m_configObjects: {}

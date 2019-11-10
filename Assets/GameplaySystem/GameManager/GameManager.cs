@@ -13,8 +13,8 @@ public class GameManager : Singleton<GameManager>
     private int levelCountBeforeBossLevel = 3;
 
     private int mainMenuId = 0;
-    private int normalLevelId = 1;
-    private int bossLevelId = 2;
+    private int normalLevelId = 2;
+    private int bossLevelId = 3;
 
     private void Start()
     {

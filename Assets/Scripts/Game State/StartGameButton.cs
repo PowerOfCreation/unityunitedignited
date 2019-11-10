@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RestartButton : MonoBehaviour
+public class StartGameButton : MonoBehaviour
 {
     public void OnClick()
     {
