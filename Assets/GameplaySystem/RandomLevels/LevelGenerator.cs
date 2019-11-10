@@ -63,7 +63,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
     {
         for (int i = 0; i < amount; i++)
         {
-            Vector2Int position = GetRandomGroundPositionAwayFromPoint(groundData, GameManager.Instance.GetLocalPlayer().position, GameManager.Instance.minDistanceOfObjectsToPlayer);
+            Vector2Int position = GetRandomGroundPositionAwayFromPoint(groundData, Player.self.transform.position, GameManager.Instance.minDistanceOfObjectsToPlayer);
             GameObject.Instantiate(gameObjectToSpawn, new Vector3(position.x, position.y, -1), Quaternion.identity);
         }
     }
