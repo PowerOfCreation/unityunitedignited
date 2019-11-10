@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour
         Vector2 movement = new Vector2(moveHorizontal, moveVertical);
         Vector2 moveDirection = rigidbody2d.velocity;
 
-        animator.SetBool(walkId, moveVertical != 0);
+        animator.SetBool(walkId, moveVertical != 0 || moveHorizontal != 0);
 
         if (moveDirection != Vector2.zero)
         {
