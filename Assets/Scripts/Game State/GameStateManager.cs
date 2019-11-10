@@ -48,5 +48,6 @@ public class GameStateManager : Singleton<GameStateManager>
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        currentState = GameState.Running;
     }
 }
