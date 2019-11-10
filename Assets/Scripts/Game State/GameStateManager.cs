@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameStateManager : Singleton<GameStateManager>
 {
     private GameObject player;
-    public GameObject gameOverCanvas;
+    private GameObject gameOverCanvas;
+    public int level = 0;
 
     public enum GameState
     {
@@ -15,6 +16,8 @@ public class GameStateManager : Singleton<GameStateManager>
     }
 
     private GameState currentState = GameState.Running;
+
+    public GameObject GameOverCanvas { get => gameOverCanvas; set => gameOverCanvas = value; }
 
     public void SetGameState(GameState state)
     {
@@ -27,7 +30,7 @@ public class GameStateManager : Singleton<GameStateManager>
             movement.enabled = false;
             player.GetComponent<Attack>().enabled = false;
 
-            gameOverCanvas.SetActive(true);
+            GameOverCanvas.SetActive(true);
         }
     }
 
@@ -38,13 +41,12 @@ public class GameStateManager : Singleton<GameStateManager>
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("Prototype");
+        SceneManager.LoadScene(level);
     }
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
     }
-
-    
 }

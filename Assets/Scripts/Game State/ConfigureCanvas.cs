@@ -8,5 +8,6 @@ public class ConfigureCanvas : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
+        GameStateManager.Instance.GameOverCanvas = gameObject;
     }
 }
