@@ -32,7 +32,7 @@ public class LevelGenerator : Singleton<LevelGenerator>
                 {
                     GameObject.Instantiate(GetGroundPrefab(), new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
-                else
+                else if(HasAdjacentFloorTile(groundData, new Vector2Int(x, y)))
                 {
                     GameObject.Instantiate(wallPrefab, new Vector3(x, y, 1), Quaternion.identity, transform);
                 }
@@ -45,6 +45,18 @@ public class LevelGenerator : Singleton<LevelGenerator>
         GameObject.Instantiate(exitLevelPrefab, new Vector3(lastPosition.x, lastPosition.y, -1), Quaternion.identity);
 
         GetComponent<CompositeCollider2D>().GenerateGeometry();
+    }
+
+    private bool HasAdjacentFloorTile(bool[,] groundData, Vector2Int position)
+    {
+        if(groundData.GetLength(0) > position.x + 1 && groundData[position.x + 1, position.y]) { return true; }
+        if(position.x > 0 && groundData[position.x - 1, position.y]) { return true; }
+
+        if(groundData.GetLength(1) > position.y + 1 && groundData[position.x, position.y + 1]) { return true; }
+        if(position.y > 0 && groundData[position.x, position.y -1]) { return true; }
+
+        return false;
+
     }
 
     private void SpawnGameObjectOnGround(bool[,] groundData, int amount, GameObject gameObjectToSpawn)
