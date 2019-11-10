@@ -24,6 +24,6 @@ public class LevelExit : MonoBehaviour
 
     public void DoorOpened()
     {
-        GameManager.Instance.NextLevel();
+        GameManager.NextLevel();
     }
 }

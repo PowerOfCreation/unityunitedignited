@@ -9,12 +9,12 @@ public class GameManager : Singleton<GameManager>
 
     public float minDistanceOfObjectsToPlayer = 10f;
 
-    private int currentLevel = 0;
-    private int levelCountBeforeBossLevel = 3;
+    private static int currentLevel = 0;
+    private static int levelCountBeforeBossLevel = 3;
 
-    private int mainMenuId = 0;
-    private int normalLevelId = 1;
-    private int bossLevelId = 2;
+    private static int mainMenuId = 0;
+    private static int normalLevelId = 1;
+    private static int bossLevelId = 2;
 
     public int iterationOffset = 8;
     public int iterationsPerLevel = 4;
@@ -33,7 +33,7 @@ public class GameManager : Singleton<GameManager>
         SceneManager.LoadScene(normalLevelId);
     }
 
-    public void NextLevel()
+    public static void NextLevel()
     {
         currentLevel++;
 
