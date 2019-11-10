@@ -120,75 +120,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &500088207
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 552460794600930660, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_Name
-      value: Feige_Melee
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 101.606
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 102.818
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 552460794600930662, guid: d369d98fceb56e45dbfdadd5542dde07,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d369d98fceb56e45dbfdadd5542dde07, type: 3}
 --- !u!1 &909030927
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +228,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1457590651
 GameObject:
@@ -713,6 +644,30 @@ PrefabInstance:
     - target: {fileID: 1364316057163560776, guid: 19f6c6fb91b45b4468bb685d8f76c898,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242890776036805245, guid: 19f6c6fb91b45b4468bb685d8f76c898,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242890776036805245, guid: 19f6c6fb91b45b4468bb685d8f76c898,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242890776036805245, guid: 19f6c6fb91b45b4468bb685d8f76c898,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242890776036805245, guid: 19f6c6fb91b45b4468bb685d8f76c898,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 521198989, guid: 19f6c6fb91b45b4468bb685d8f76c898, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
