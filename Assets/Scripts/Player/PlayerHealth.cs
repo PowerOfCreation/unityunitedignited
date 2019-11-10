@@ -8,6 +8,7 @@ public class PlayerHealth : Health, IDamagable
     public GameObject hurtPanel;
     public AudioClip healSoundFx;
     private AudioSource _audioSource;
+    public GameObject _bgAudio;
     public void Start()
     {
         maxPlayerHealth = health;
@@ -40,6 +41,7 @@ public class PlayerHealth : Health, IDamagable
 
     public override void Die()
     {
+        if(_bgAudio) _bgAudio.GetComponent<AudioSource>().Stop();    
         GameStateManager.Instance.SetGameState(GameStateManager.GameState.Over);
     }
 
