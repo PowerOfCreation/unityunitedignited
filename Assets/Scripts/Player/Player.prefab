@@ -115,6 +115,7 @@ MonoBehaviour:
   attackHolder: {fileID: 5453898768076068505}
   attackRadius: 1
   attackDamage: 5
+  attackRate: 120
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 512
