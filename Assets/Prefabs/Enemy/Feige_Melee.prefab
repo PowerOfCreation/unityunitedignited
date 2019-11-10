@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  _takeDamage: {fileID: 0}
+  takeDamage: {fileID: 8300000, guid: e824ddc934f9e264f83bc402ec8bd98e, type: 3}
   deadPrefab: {fileID: 0}
   deadEffect: {fileID: 0}
   takeDamageEffect: {fileID: 3614156429526535162}

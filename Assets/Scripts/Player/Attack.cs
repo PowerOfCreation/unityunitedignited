@@ -11,11 +11,6 @@ public class Attack : MonoBehaviour
     public int attackDamage = 5;
 
     public LayerMask enemyLayerMask;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

@@ -11,7 +11,7 @@ public class Health : MonoBehaviour, IDamagable
     private Rigidbody2D rigidbody2D;
     private bool tookDamage = false;
     private float damageTime = .1f;
-    public AudioClip _takeDamage;
+    public AudioClip takeDamage;
     public GameObject deadPrefab;
     public ParticleSystem deadEffect;
     public ParticleSystem takeDamageEffect;
@@ -34,6 +34,9 @@ public class Health : MonoBehaviour, IDamagable
         tookDamage = true;
         health -= damage;
         if(takeDamageEffect) takeDamageEffect.Play();
+        if(takeDamage) {
+            _AudioSource.PlayOneShot(takeDamage, 0.5F);
+        }
         if (health <= 0) 
         {
             Die();
