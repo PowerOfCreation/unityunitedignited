@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameStateManager : Singleton<GameStateManager>
 {
-    private GameObject player;
     private GameObject gameOverCanvas;
     public int level = 0;
 
@@ -25,11 +24,11 @@ public class GameStateManager : Singleton<GameStateManager>
 
         if (currentState == GameState.Over)
         {
-            Movement movement = player.GetComponent<Movement>();
+            Movement movement = Player.self.GetComponent<Movement>();
             movement.playerSprite.gameObject.SetActive(false);
             movement.enabled = false;
-            player.GetComponent<Attack>().enabled = false;
-            player.GetComponent<AudioSource>().enabled = false;
+            Player.self.GetComponent<Attack>().enabled = false;
+            Player.self.GetComponent<AudioSource>().enabled = false;
             GameOverCanvas.GetComponent<CanvasGroup>().Show();
         }
     }
@@ -47,7 +46,6 @@ public class GameStateManager : Singleton<GameStateManager>
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
         currentState = GameState.Running;
     }
 }
