@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class HealthSlider : MonoBehaviour
 {
     public static HealthSlider self;
-
+    
+    [HideInInspector]
     public Slider slider;
-    // Start is called before the first frame update
+    
     void Start()
     {
         self = this;

@@ -7,5 +7,7 @@ public class RestartButton : MonoBehaviour
     public void OnClick()
     {
         GameManager.Instance.StartGame();
+        GameStateManager.Instance.GameOverCanvas.GetComponent<CanvasGroup>().Hide();
+        PlayerHealth.self.ResetHealth();
     }
 }

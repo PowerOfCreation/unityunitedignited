@@ -10,10 +10,21 @@ public class PlayerHealth : Health, IDamagable
     private AudioSource _audioSource;
     public AudioClip GameOverSoundFx;
     public GameObject _bgAudio;
+
+    public static PlayerHealth self;
+
     public void Start()
     {
-        maxPlayerHealth = health;
         _audioSource = GetComponent<AudioSource>();
+        maxPlayerHealth = health;
+        self = this;
+        UpdateHealthSlider();
+    }
+
+    public void ResetHealth()
+    {
+        health = maxPlayerHealth;
+        UpdateHealthSlider();
     }
 
     public override void GetDamage(int damage, Transform attackerTransform)

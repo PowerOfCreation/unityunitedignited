@@ -8,16 +8,6 @@ public class LoadMainMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("Menu");
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GetComponentInParent<CanvasGroup>().Hide();
     }
 }
