@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    private Transform playerTransform;
-
     public float minDistanceOfObjectsToPlayer = 10f;
 
     private static int currentLevel = 0;
@@ -21,12 +19,6 @@ public class GameManager : Singleton<GameManager>
     public float branchProbabilityPerLevel = .2f;
     public int enemiesPerLevel = 7;
     public int alcoholPerLevel = 9;
-
-    private void Start()
-    {
-        if(GameManager.Instance != this) { Destroy(gameObject); }
-        DontDestroyOnLoad(gameObject);
-    }
 
     public void StartGame()
     {
@@ -45,16 +37,6 @@ public class GameManager : Singleton<GameManager>
         {
             SceneManager.LoadScene(normalLevelId);
         }
-    }
-
-    public Transform GetLocalPlayer()
-    {
-        return playerTransform;
-    }
-    
-    public void SetLocalPlayer(Transform playerTransform)
-    {
-        this.playerTransform = playerTransform;
     }
 
     public void RegisterLevelGenerator(LevelGenerator levelGenerator)

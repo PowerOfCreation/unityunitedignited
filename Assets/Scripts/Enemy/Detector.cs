@@ -9,12 +9,10 @@ public class Detector : MonoBehaviour
 
     public float detectionRange = 3f;
 
-    public static Transform playerTransform;
     public EnemyController enemyController;
 
     private void Start()
     {
-        playerTransform = GameManager.Instance.GetLocalPlayer();
         enemyController = GetComponentInParent<EnemyController>();
     }
 
@@ -30,12 +28,12 @@ public class Detector : MonoBehaviour
                 }
                 else
                 {
-                    enemyController.player = playerTransform;
+                    enemyController.player = Player.self.transform;
                 }
             }
             else
             {
-                enemyController.player = playerTransform;
+                enemyController.player = Player.self.transform;
             }
         }
         else

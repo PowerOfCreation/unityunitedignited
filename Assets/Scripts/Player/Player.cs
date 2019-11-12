@@ -9,6 +9,5 @@ public class Player : MonoBehaviour
     void Awake()
     {
         self = this;
-        GameManager.Instance.SetLocalPlayer(transform);
     }
 }

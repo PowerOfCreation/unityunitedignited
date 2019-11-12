@@ -18,7 +18,7 @@ public class AttackEnd : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameManager.Instance.GetLocalPlayer().GetComponent<Attack>().OnAttackEnded();        
+        Player.self.GetComponent<Attack>().OnAttackEnded();        
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
